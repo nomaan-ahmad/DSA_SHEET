@@ -1,5 +1,0 @@
-#ignoring file starting with .iml
-*.iml
-
-#ignoring folder
-.idea
