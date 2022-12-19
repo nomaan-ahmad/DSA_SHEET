@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class MakingTeams {
+public class TheWorldIsATheatre {
     static long[][] C;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
