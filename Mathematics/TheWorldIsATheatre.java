@@ -5,17 +5,18 @@ import java.util.Scanner;
 public class TheWorldIsATheatre {
     static long[][] C;
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        // we'll first make combination table using Pascal's triangle
-        // why 61? because max combination we'll use it for (boys + girls) C teamSize
-        // combination table
-        C = buildPascalTriangle();
+        try (Scanner in = new Scanner(System.in)) {
+            // we'll first make combination table using Pascal's triangle
+            // why 61? because max combination we'll use it for (boys + girls) C teamSize
+            // combination table
+            C = buildPascalTriangle();
 
-        int boys = in.nextInt();
-        int girls = in.nextInt();
-        int teamSize = in.nextInt();
+            int boys = in.nextInt();
+            int girls = in.nextInt();
+            int teamSize = in.nextInt();
 
-        System.out.println(waysToBuildTeam(boys, girls, teamSize));
+            System.out.println(waysToBuildTeam(boys, girls, teamSize));
+        }
     }
 
     private static long[][] buildPascalTriangle() {

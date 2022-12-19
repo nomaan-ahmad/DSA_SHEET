@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
 // https://leetcode.com/problems/first-unique-character-in-a-string/description/
 
 public class FirstUniqueCharacter {
