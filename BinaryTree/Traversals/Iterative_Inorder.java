@@ -8,12 +8,12 @@ public class Iterative_Inorder {
         TreeNode left;
         TreeNode right;
 
-        TreeNode(){}
-        TreeNode(int _val){
-            val = _val;
-            left = null;
-            right = null;
-        }
+        // TreeNode(){}
+        // TreeNode(int _val){
+        //     val = _val;
+        //     left = null;
+        //     right = null;
+        // }
     }
 
     public List<Integer> inorder(TreeNode root){
