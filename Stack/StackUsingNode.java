@@ -22,7 +22,7 @@ public class StackUsingNode {
             return top == null;
         }
 
-        public T peek() throws Exception {
+        public T peek() {
             if (top == null) throw new NullPointerException();
 
             return top.val;
@@ -35,7 +35,7 @@ public class StackUsingNode {
             top = temp;
         }
 
-        public T pop() throws Exception {
+        public T pop() {
             if (top == null) throw new NullPointerException();
 
             size--;
