@@ -23,6 +23,14 @@ public class UniquePaths_iii {
         return travel(grid, new boolean[grid.length][grid[0].length], total, row, col, count);
     }
 
+    /*
+     * In this solution we have used additional boolean matrix to track which point is part of our current path
+     * 
+     * "Instead we can also solve it without using auxiliary space by using a logic which says:
+     * if we visit any node then we'll mark it -2 in the given matrix itself
+     * and while backtracking we can restore its value to 0"
+     * 
+     */
     private int travel (int[][] grid, boolean[][] isVisited, int[] totalVisited, int i, int j, int count) {
         if (i >= grid.length || i < 0|| j >= grid[0].length || j < 0 || isVisited[i][j] || grid[i][j] == -1) return 0;
 
