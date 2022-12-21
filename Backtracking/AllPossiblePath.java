@@ -1,5 +1,3 @@
-package Backtracking;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,8 @@ import java.util.List;
 
  // In this problem, we have to print all possible path from source to destination while dodging all obstacles
  
-public class MazeProblem {
+public class AllPossiblePath {
+
     private static class Position {
         int x;
         int y;
