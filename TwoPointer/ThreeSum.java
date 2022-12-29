@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class 3Sum {
+public class ThreeSum {
     private List<List<Integer>> tripletSum(int[] nums) {
         int len = nums.length;
         Arrays.sort(nums);
