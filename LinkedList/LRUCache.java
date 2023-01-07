@@ -1,7 +1,8 @@
 package LinkedList;
 
-import java.util.HashMap;
+// https://leetcode.com/problems/lru-cache/description/
 
+import java.util.HashMap;
 public class LRUCache {
     private static class Node{
         int key;
@@ -29,6 +30,8 @@ public class LRUCache {
         tail = null;
     }
 
+    // get method will return val corresponding to key if present
+    // and also make particular key as most recently used key by moving it to tail
     public int get(int key) {
         if (!map.containsKey(key)) return -1;
         else {
@@ -39,8 +42,13 @@ public class LRUCache {
         }
     }
 
+    // put will add new key val to the cache
+    // 1. if capacity is full then it will delete, least recently used key
+    // 2. if capacity is not full then add the key to tail of the cache
+    // 3. if the key is already present in the cache then update the node corresponding to key and move it to the tail
     public void put(int key, int value) {
         if (map.containsKey(key)) {
+            // if key is already present in the cache
             Node temp = map.get(key);
             temp.val = value;
 
@@ -48,8 +56,10 @@ public class LRUCache {
             moveToTail(temp);
 
         }else {
+            // if key is not present
             Node newNode = new Node(key, value);
             if (size < capacity) {
+                // if there is space in cache (capacity is not full)
                 map.put(key, newNode);
                 // add to tail
                 addToTail(newNode);
@@ -58,21 +68,24 @@ public class LRUCache {
                 if (head == null) head = tail;
                 size++;
             }else {
+                // capacity is full
                 // deleting first element in cache from map
                 map.remove(head.key);
 
                 // adding new key to map
                 map.put(key, newNode);
 
+                // deleting first node by incrementing head reference
                 head = head.next;
                 if (head == null) {
-                    tail = null;
+                    // if head is null that means that was only one element in cache
+                    tail = null; // we made tail=null, because there is no element in cache
                     addToTail(newNode);
                     head = tail;
                 }
                 addToTail(newNode);
+                // (garbage collection) head->prev is still pointing to the deleted node
                 head.prev = null; // why it is necessary? because first node wasn't remove until there is a reference to it
-                // (garbage collection)
             }
         }
     }
@@ -80,6 +93,7 @@ public class LRUCache {
     private void addToTail(Node node) {
         if (tail == null) tail = node; // if tail is null which means no element in cache
         else {
+            // basic reference connection
             tail.next = node;
             node.prev = tail;
             tail = tail.next;
