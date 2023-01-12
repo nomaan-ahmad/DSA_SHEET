@@ -1,4 +1,4 @@
-package Heap;
+package inLecture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,19 +57,23 @@ public class MaxHeap {
         }
     }
 
+    private void bubblingUp(int index) {
+        while(index > 0 && container.get(index) > container.get((index-1)/2)) {
+            int temp = container.get(index);
+            container.set(index, container.get(index-1)/2);
+            container.set((index-1)/2, temp);
+
+            index = (index-1)/2;
+        }
+    }
+
     public void insert(int num) {
         size++;
         if (size == 0) container.add(num);
         else {
             container.add(num);
-            int index = size-1;
-            while (index > 0 && container.get(index) > container.get((index-1)/2)) {
-                int temp = container.get(index);
-                container.set(index, container.get((index-1)/2));
-                container.set((index-1)/2, temp);
-
-                index = (index-1)/2;
-            }
+            int index = size-1; // element is inserted at the last
+            bubblingUp(index);
         }
     }
 
@@ -88,5 +92,15 @@ public class MaxHeap {
 
         size--;
         return top;
+    }
+
+    public void delete (int index) {
+        // when we want to delete element from the heap, simply just make the number Integer.MAX,
+        // and heapify it then pop it from the heap
+
+        if (index >= size) return;
+        container.set(index, Integer.MAX_VALUE);
+        heapify(index);
+        pop();
     }
 }
