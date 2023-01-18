@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdjacencyList {
-    public List<List<Integer>> createAdjacencyList(int n, List<List<Integer>> E) {
+    public static List<List<Integer>> createAdjacencyList(int n, List<List<Integer>> E) {
         List<List<Integer>> adjList = new ArrayList<>();
 
         // initialise n list with null

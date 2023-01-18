@@ -10,7 +10,7 @@ public class AdjacencyMatrix {
      */
     // now we have to make adjacency matrix out of it.
 
-    public int[][] createAdjacencyMatrix(int n, List<List<Integer>> E) {
+    public static int[][] createAdjacencyMatrix(int n, List<List<Integer>> E) {
         int[][] mat = new int[n+1][n+1];
         // no matter the indexing format, whether 0-based or 1-based. Always make square matrix of (n+1) size
 
