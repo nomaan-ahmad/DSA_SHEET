@@ -13,11 +13,16 @@ public class DFS_Iterative {
         List<Integer> res = new ArrayList<>();
         boolean[] isVisited = new boolean[v+1];
 
+        // this loop is to include all disconnected components in the graph
         for (int i = 0; i <= v; i++) {
+
+            // we'll only traverse the node in the graph if it is not traversed earlier
             if (!isVisited[i]) {
                 Stack<Integer> stk = new Stack<>();
                 stk.push(i);
                 isVisited[i] = true;
+                
+                // pushing all nodes of subtrees whose parent is "i"
                 while (!stk.isEmpty()) {
                     int temp = stk.pop();
                     isVisited[temp] = true;
