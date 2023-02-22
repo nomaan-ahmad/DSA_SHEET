@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ZigZagLevelOrder {
-    private static class TreeNode{
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
