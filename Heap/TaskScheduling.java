@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 // https://leetcode.com/problems/task-scheduler/
-public class TaskScheduler {
+public class TaskScheduling {
     public static void main(String[] args) {
         char[] tasks = {'A','A','A','A','A','A','B','C','D','E','F','G'};
         int n = 2;
