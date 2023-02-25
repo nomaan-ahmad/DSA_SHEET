@@ -13,7 +13,7 @@ public class _01_Matrix {
     int pow;
 
     // code logic
-    public int[][] updateMatrix(int[][] mat) {
+    public int[][] updateMatrix_I(int[][] mat) {
         final int n = mat.length;
         final int m = mat[0].length;
 
@@ -80,5 +80,61 @@ public class _01_Matrix {
     private boolean possible(int x, int y, int n, int m) {
         if (x < 0 || x >= n) return false;
         return y >= 0 && y < m;
+    }
+
+    /* **************************************** Second approach ************************************************** */
+
+
+    private static class Pair{
+        int x;
+        int y;
+        Pair(int _x, int _y) {
+            x = _x;
+            y = _y;
+        }
+    }
+
+    public int[][] updateMatrix(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+
+        int[][] directions = {
+                {0, -1},
+                {0, 1},
+                {1, 0},
+                {-1, 0}
+        };
+
+        Queue<Pair> q = new LinkedList<>();
+        boolean[][] isVisited = new boolean[m][n];
+
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 0) {
+                    q.add(new Pair(i,j));
+                    isVisited[i][j] = true;
+                }
+            }
+
+
+        while (!q.isEmpty()) {
+            Pair temp = q.poll();
+
+            for (int[] dr : directions) {
+                int x = temp.x + dr[0];
+                int y = temp.y + dr[1];
+
+                if (isValid(x, y, m, n) && !isVisited[x][y]) {
+                    q.add(new Pair(x,y));
+                    isVisited[x][y] = true;
+                    mat[x][y] += mat[temp.x][temp.y];
+                }
+            }
+        }
+        return mat;
+    }
+
+    private boolean isValid(int x, int y, int m, int n) {
+        return (x >= 0 && x < m) && (y >= 0 && y < n);
     }
 }
