@@ -16,7 +16,7 @@ public class IsBipartite {
 
         char[] color = new char[v];
 
-        for (int i = 0; i < v; i++)
+        for (int i = 0; i < v+1; i++)
             if (color[i] == 0) {
                 if (!dfs(i, graph, color, 'r')) return false;
             }
